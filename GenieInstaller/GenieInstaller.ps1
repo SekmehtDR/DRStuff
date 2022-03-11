@@ -84,14 +84,18 @@ Write-Host "-----------------------------------------------------"  -ForegroundC
 #makes the new folder
 Write-Host ""
 Write-Host "Making new directory:   $fullGenieFolderPath" -ForegroundColor Yellow
+Write-Host ""
+Write-Host "-----------------------------------------------------"  -ForegroundColor Green
 PromptYesNo
+Write-Host ""
+Write-Host "-----------------------------------------------------"  -ForegroundColor Green
 #if folder exists, see if its empty.. if not exit. If folder exists but is empty, continue. If older is new make it!
 if (Test-Path $fullGenieFolderPath) {
     Write-Host ""
     Write-Host "Folder already exists..." -ForegroundColor Yellow
     $folderfilecount = (Get-ChildItem -Path $fullGenieFolderPath -File | Measure-Object).Count
     if ($folderfilecount -gt 0){
-        Write-Host "  - Folder is not empty. To avoid potentially overwriting another Genie instance, please remove/clean out this folder and rerun this script." -ForegroundColor Yellow
+        Write-Host "  -Folder is not empty. please remove/clean out this folder and rerun this script." -ForegroundColor Yellow
         Exit
     }
 }
@@ -115,16 +119,16 @@ Write-Host ""
 Write-Host "-----------------------------------------------------"  -ForegroundColor Green  
 Write-Host ""
 PromptYesNo
+Write-Host ""
 Invoke-WebRequest -Uri "$genieGitURL$genieConfigFiles" -OutFile "$fullGenieFolderPath$genieConfigFiles"
 Invoke-WebRequest -Uri "$genieGitURL$geniePlugins" -OutFile "$fullGenieFolderPath$geniePlugins"
 Invoke-WebRequest -Uri "$genieGitURL$geniePackage" -OutFile "$fullGenieFolderPath$geniePackage"
-#curl $genieGitURL$genieConfigFiles -L -o $fullGenieFolderPath$genieConfigFiles
-#curl $genieGitURL$geniePlugins -L -o $fullGenieFolderPath$geniePlugins
-#curl $genieGitURL$geniePackage -L -o $fullGenieFolderPath$geniePackage
 #extracts the stuff in order
 Write-Host "-----------------------------------------------------"  -ForegroundColor Green 
 Write-Host "" 
 Write-Host "Extract the ZIP files into:   $fullGenieFolderPath ?"   -ForegroundColor Yellow
+Write-Host "" 
+Write-Host "-----------------------------------------------------"  -ForegroundColor Green 
 PromptYesNo
 Expand-Archive -LiteralPath "$fullGenieFolderPath$genieConfigFiles" -DestinationPath "$fullGenieFolderPath" -ErrorAction SilentlyContinue
 Expand-Archive -LiteralPath "$fullGenieFolderPath$geniePlugins" -DestinationPath "$fullGenieFolderPath" -ErrorAction SilentlyContinue
@@ -144,14 +148,16 @@ Write-Host "-----------------------------------------------------"  -ForegroundC
 #deletes the files
 Write-Host ""
 Write-Host "Cleaning Up Files downloaded to:   $fullGenieFolderPath"   -ForegroundColor Yellow
+Write-Host ""
+Write-Host "-----------------------------------------------------"  -ForegroundColor Green
+Write-Host ""
 PromptYesNo
 remove-item $fullGenieFolderPath$genieConfigFiles -Force
 remove-item $fullGenieFolderPath$geniePlugins -Force
 remove-item $fullGenieFolderPath$geniePackage -Force
 Write-Host ""
-#makes sure stuff actually wrote to the folder
 Write-Host "-----------------------------------------------------"  -ForegroundColor Green 
 Write-Host ""
-Write-Host "END of Script, please verify that Genie.exe launches successfully! ($fullGenieFolderPath)" -ForegroundColor Green 
+Write-Host "END of Script, please verify that Genie.exe launches successfully!" -ForegroundColor Green 
 Write-Host "Enjoy" -ForegroundColor Green 
 exit
