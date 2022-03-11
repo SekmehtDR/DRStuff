@@ -1,6 +1,6 @@
 # DRStuff
 
-EZ Genie Installer
+EZ Genie4 Installer
 1) Download the GenieInstall.ps1 file from GenieInstaller folder.
 2) Make modifications to the file's $genieInstallRootFolder variable if needed (C:\temp is set as default)
 3) Run the script as Administrator.
