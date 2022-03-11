@@ -146,5 +146,6 @@ remove-item $fullGenieFolderPath$geniePackage -Force
 Write-Host ""
 #makes sure stuff actually wrote to the folder
 Write-Host "-----------------------------------------------------"  -ForegroundColor Green 
-Write-Host "END of Script, please verify $fullGenieFolderPath and that Genie.exe launches successfully! Enjoy" -ForegroundColor Green 
+Write-Host "END of Script, please verify that Genie.exe launches successfully! ($fullGenieFolderPath)" -ForegroundColor Green 
+Write-Host "Enjoy" -ForegroundColor Green 
 exit
