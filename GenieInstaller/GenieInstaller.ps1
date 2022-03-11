@@ -1,7 +1,11 @@
+#Github Release URL Info
+$releaseDownloadURL = "https://github.com/GenieClient/Genie4/releases/download/4.0.2.0/"
+$releaseDownloadURL -match 'https://github.com/(?<GithubUser>.*)/(?<GithubRepo>.*)/releases/download/(?<Version>.*)/'
+
 #Git Repo Stuff
-$gitHubUser = "GenieClient"
-$gitHubRepo = "Genie4"
-$gitHubVersion = "4.0.2.0"
+$gitHubUser = $Matches.GithubUser
+$gitHubRepo = $Matches.GithubRepo
+$gitHubVersion = $Matches.Version
 
 #Where to create the genie folder at?
 $genieInstallRootFolder = "C:\temp\"
@@ -18,14 +22,6 @@ $geniePlugins = "Plugins.zip"
 $fullGenieFolderPath = "$genieInstallRootFolder$genieFolderName\"
 
 $genieGitURL = "https://github.com/$gitHubUser/$gitHubRepo/releases/download/$gitHubVersion/"
-#https://github.com/GenieClient/Genie4/releases/download/4.0.2.0/#
-
-#Write-Output $genieGitURL
-#Write-Output $genieConfigFiles
-#Write-Output $geniePackage
-#write-output $genieGitURL$genieConfigFiles
-#Write-Output $genieGitURL$geniePackage
-#Write-Output $genieFolderName
 
 #function to provide an exit
 function PromptYesNo {
@@ -41,9 +37,11 @@ function PromptYesNo {
 
 #start of script
 Clear-Host
+
 Write-Host "-----------------------------------------------------"  -ForegroundColor Green
-Write-Host "Seks EZ Genie 4 Installer"                              -ForegroundColor Green
+Write-Host "Seks EZ Genie4 Installer"                               -ForegroundColor Green
 Write-Host "-----------------------------------------------------"  -ForegroundColor Green
+Write-Host "GITHUB URL: $genieGitURL"
 Write-Host ""                                                       -ForegroundColor Green
 Write-Host "Available Builds:"                                      -ForegroundColor Yellow
 Write-Host "- Option 1: x86"                                        -ForegroundColor Yellow
@@ -94,7 +92,7 @@ if (Test-Path $fullGenieFolderPath) {
     Write-Host "Folder already exists..." -ForegroundColor Yellow
     $folderfilecount = (Get-ChildItem -Path $fullGenieFolderPath -File | Measure-Object).Count
     if ($folderfilecount -gt 0){
-        Write-Host "  -Folder is not empty. To avoid potentially overwriting another Genie instance, please remove/clean out this folder and rerun this script." -ForegroundColor Yellow
+        Write-Host "  - Folder is not empty. To avoid potentially overwriting another Genie instance, please remove/clean out this folder and rerun this script." -ForegroundColor Yellow
         Exit
     }
 }
