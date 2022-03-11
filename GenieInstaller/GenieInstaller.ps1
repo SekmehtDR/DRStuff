@@ -76,13 +76,16 @@ write-Host "Plugins:                $geniePlugins"                  -ForegroundC
 Write-Host "Application Package:    $geniePackage"                  -ForegroundColor Yellow
 Write-Host ""
 Write-Host "Install Path:           $fullGenieFolderPath"           -ForegroundColor Yellow
+Write-Host ""
 Write-Host "-----------------------------------------------------"  -ForegroundColor Green
 
 #verification of some config
+Write-Host ""
 PromptYesNo
 Write-Host ""
 Write-Host "-----------------------------------------------------"  -ForegroundColor Green  
 #makes the new folder
+Write-Host ""
 Write-Host "Making new directory:   $fullGenieFolderPath" -ForegroundColor Yellow
 PromptYesNo
 #if folder exists, see if its empty.. if not exit. If folder exists but is empty, continue. If older is new make it!
@@ -101,7 +104,8 @@ else
     Write-Host ""
     Write-Host "Folder Created successfully..." -ForegroundColor Green
 }
-#CURLs everything to the folder
+#Downloads files via Invoke-WebRequest
+Write-Host ""
 Write-Host "-----------------------------------------------------"  -ForegroundColor Green  
 Write-Host ""
 Write-Host "Downloading files via Invoke-WebRequest..."             -ForegroundColor Yellow
@@ -111,6 +115,8 @@ Write-Host "Config Package:         $genieConfigFiles"              -ForegroundC
 write-Host "Plugins:                $geniePlugins"                  -ForegroundColor Yellow
 Write-Host "Application Package:    $geniePackage"                  -ForegroundColor Yellow
 Write-Host ""
+Write-Host "-----------------------------------------------------"  -ForegroundColor Green  
+Write-Host ""
 PromptYesNo
 Invoke-WebRequest -Uri "$genieGitURL$genieConfigFiles" -OutFile "$fullGenieFolderPath$genieConfigFiles"
 Invoke-WebRequest -Uri "$genieGitURL$geniePlugins" -OutFile "$fullGenieFolderPath$geniePlugins"
@@ -119,7 +125,8 @@ Invoke-WebRequest -Uri "$genieGitURL$geniePackage" -OutFile "$fullGenieFolderPat
 #curl $genieGitURL$geniePlugins -L -o $fullGenieFolderPath$geniePlugins
 #curl $genieGitURL$geniePackage -L -o $fullGenieFolderPath$geniePackage
 #extracts the stuff in order
-Write-Host "-----------------------------------------------------"  -ForegroundColor Green  
+Write-Host "-----------------------------------------------------"  -ForegroundColor Green 
+Write-Host "" 
 Write-Host "Extract the ZIP files into:   $fullGenieFolderPath ?"   -ForegroundColor Yellow
 PromptYesNo
 Expand-Archive -LiteralPath "$fullGenieFolderPath$genieConfigFiles" -DestinationPath "$fullGenieFolderPath" -ErrorAction SilentlyContinue
@@ -138,6 +145,7 @@ if (Test-Path $fullGenieFolderPath) {
 Write-Host ""
 Write-Host "-----------------------------------------------------"  -ForegroundColor Green 
 #deletes the files
+Write-Host ""
 Write-Host "Cleaning Up Files downloaded to:   $fullGenieFolderPath"   -ForegroundColor Yellow
 PromptYesNo
 remove-item $fullGenieFolderPath$genieConfigFiles -Force
@@ -146,6 +154,7 @@ remove-item $fullGenieFolderPath$geniePackage -Force
 Write-Host ""
 #makes sure stuff actually wrote to the folder
 Write-Host "-----------------------------------------------------"  -ForegroundColor Green 
+Write-Host ""
 Write-Host "END of Script, please verify that Genie.exe launches successfully! ($fullGenieFolderPath)" -ForegroundColor Green 
 Write-Host "Enjoy" -ForegroundColor Green 
 exit
