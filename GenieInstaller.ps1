@@ -1,8 +1,5 @@
 #Creates a new folder, grabs the files, extracts them, then cleans up....
 
-#Where to create the genie folder at?
-$genieInstallRootFolder = "C:\temp\"
-
 #Formatting of Genie FolderName (Genie Client <version without periods>. Ex. Genie Client 4020).
 $genieVersionName = $gitHubVersion.Replace(".", "")
 $genieFolderName = "Genie Client $genieVersionName"
@@ -20,6 +17,9 @@ $geniePlugins = "Plugins.zip"
 $fullGenieFolderPath = "$genieInstallRootFolder$genieFolderName\"
 
 $genieGitURL = "https:/github.com/$gitHubUser/$gitHubRepo/releases/download/$gitHubVersion/"
+
+#Where to create the genie folder at?
+$genieInstallRootFolder = "C:\temp\"
 
 #function to provide an exit
 function PromptYesNo {
