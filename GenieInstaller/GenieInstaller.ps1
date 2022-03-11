@@ -6,6 +6,7 @@ $releaseDownloadURL -match 'https://github.com/(?<GithubUser>.*)/(?<GithubRepo>.
 $gitHubUser = $Matches.GithubUser
 $gitHubRepo = $Matches.GithubRepo
 $gitHubVersion = $Matches.Version
+$genieGitURL = "https://github.com/$gitHubUser/$gitHubRepo/releases/download/$gitHubVersion/"
 
 #Where to create the genie folder at?
 $genieInstallRootFolder = "C:\temp\"
@@ -20,8 +21,6 @@ $geniePlugins = "Plugins.zip"
 
 #Parent Installation Path, change $genieInstallRootFolder
 $fullGenieFolderPath = "$genieInstallRootFolder$genieFolderName\"
-
-$genieGitURL = "https://github.com/$gitHubUser/$gitHubRepo/releases/download/$gitHubVersion/"
 
 #function to provide an exit
 function PromptYesNo {
