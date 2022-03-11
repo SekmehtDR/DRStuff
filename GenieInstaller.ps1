@@ -93,6 +93,7 @@ Write-Host "-----------------------------------------------------"  -ForegroundC
 if (Test-Path $fullGenieFolderPath) {
     Write-Host ""
     Write-Host "Folder already exists..." -ForegroundColor Yellow
+    Write-Host ""
     $folderfilecount = (Get-ChildItem -Path $fullGenieFolderPath -File | Measure-Object).Count
     if ($folderfilecount -gt 0){
         Write-Host "  -Folder is not empty. please remove/clean out this folder and rerun this script." -ForegroundColor Yellow
