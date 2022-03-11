@@ -1,14 +1,14 @@
+#Git Repo Stuff
+$gitHubUser = "GenieClient"
+$gitHubRepo = "Genie4"
+$gitHubVersion = "4.0.2.0"
+
 #Where to create the genie folder at?
 $genieInstallRootFolder = "C:\temp\"
 
 #Formatting of Genie FolderName (Genie Client <version without periods>. Ex. Genie Client 4020).
 $genieVersionName = $gitHubVersion.Replace(".", "")
 $genieFolderName = "Genie Client $genieVersionName"
-
-#Git Repo Stuff
-$gitHubUser = "GenieClient"
-$gitHubRepo = "Genie4"
-$gitHubVersion = "4.0.2.0"
 
 #Name of files in Repo, package specific stuff will be generated using a switch below
 $genieConfigFiles = "Base.Config.Files.zip"
