@@ -96,6 +96,7 @@ if (Test-Path $fullGenieFolderPath) {
     $folderfilecount = (Get-ChildItem -Path $fullGenieFolderPath -File | Measure-Object).Count
     if ($folderfilecount -gt 0){
         Write-Host "  -Folder is not empty. please remove/clean out this folder and rerun this script." -ForegroundColor Yellow
+        Write-Host ""
         Exit
     }
 }
@@ -149,6 +150,7 @@ if (Test-Path $fullGenieFolderPath) {
     }
     if ($folderfilecount -eq 3){
         Write-Host "Unable to extract the files properly..." -ForegroundColor Red
+        Write-Host ""
         exit
     }
 }
