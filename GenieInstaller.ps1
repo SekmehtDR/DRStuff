@@ -156,7 +156,7 @@ Write-Host ""
 Write-Host "-----------------------------------------------------"  -ForegroundColor Green 
 #deletes the files
 Write-Host ""
-Write-Host "Removing the ZIP Files in $fullGenieFolderPath"   -ForegroundColor Yellow
+Write-Host "Cleanup: Removing the ZIP Files downloaded in $fullGenieFolderPath"   -ForegroundColor Yellow
 Write-Host ""
 Write-Host "-----------------------------------------------------"  -ForegroundColor Green
 Write-Host ""
