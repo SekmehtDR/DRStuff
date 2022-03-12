@@ -186,6 +186,5 @@ if ($buildanswer -eq "3") {
 }
 Write-Host ""
 Write-Host "END of Script!" -ForegroundColor Green 
-Write-Host "Please verify that Genie.exe launches successfully!" -ForegroundColor Green 
-Write-Host "Enjoy" -ForegroundColor Green 
+Write-Host "Please verify that Genie.exe launches successfully! Enjoy!" -ForegroundColor Green 
 exit
