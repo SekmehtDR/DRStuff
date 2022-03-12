@@ -167,6 +167,22 @@ remove-item $fullGenieFolderPath$geniePackage -Force
 Write-Host ""
 Write-Host "-----------------------------------------------------"  -ForegroundColor Green 
 Write-Host ""
-Write-Host "END of Script, please verify that Genie.exe launches successfully!" -ForegroundColor Green 
+if ($buildanswer -eq "3") {
+    Write-Host "IMPORTANT: Option 3 Related: Would you like to download the Microsoft .NET 6.0.3 Desktop Runtime? It's a requirement to run." -ForegroundColor Yellow
+    Write-Host "-----------------------------------------------------"  -ForegroundColor Green
+    Write-Host ""
+    PromptYesNo
+    Write-Host ""
+    Write-Host "-----------------------------------------------------"  -ForegroundColor Green 
+    Write-Host ""
+    $windowsdesktopruntimeSource = "https://download.visualstudio.microsoft.com/download/pr/7f3a766e-9516-4579-aaf2-2b150caa465c/d57665f880cdcce816b278a944092965/windowsdesktop-runtime-6.0.3-win-x64.exe"
+    $windowsdesktopruntimeFilename = "windowsdesktop-runtime-6.0.3-win-x64.exe"
+    Invoke-WebRequest -Uri "$windowsdesktopruntimeSource" -OutFile "$fullGenieFolderPath$windowsdesktopruntimeFilename"
+    Write-Host "INFO: $windowsdesktopruntimeFilename has been saved as your $fullGenieFolderPath folder." -ForegroundColor Yellow
+    Write-Host "Please run it before launching genie.exe!" -ForegroundColor Yellow
+}
+Write-Host ""
+Write-Host "END of Script!" -ForegroundColor Green 
+Write-Host "Please verify that Genie.exe launches successfully!" -ForegroundColor Green 
 Write-Host "Enjoy" -ForegroundColor Green 
 exit
