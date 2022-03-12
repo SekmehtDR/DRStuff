@@ -172,6 +172,7 @@ Write-Host ""
 if ($buildanswer -eq "3") {
     Write-Host "IMPORTANT: Option 3: x64 Runtime Dependent Related" -ForegroundColor Yellow
     Write-Host "Would you like to download the Microsoft .NET 6.0.3 Desktop Runtime? It's a requirement to run." -ForegroundColor Yellow
+    Write-Host ""
     Write-Host "-----------------------------------------------------"  -ForegroundColor Green
     Write-Host ""
     PromptYesNo
