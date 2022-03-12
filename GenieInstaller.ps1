@@ -93,7 +93,6 @@ Write-Host "-----------------------------------------------------"  -ForegroundC
 if (Test-Path $fullGenieFolderPath) {
     Write-Host ""
     Write-Host "Folder already exists..." -ForegroundColor Yellow
-    Write-Host ""
     $folderfilecount = (Get-ChildItem -Path $fullGenieFolderPath -File | Measure-Object).Count
     if ($folderfilecount -gt 0){
         Write-Host "  -Folder is not empty. please remove/clean out this folder and rerun this script." -ForegroundColor Yellow
@@ -130,10 +129,19 @@ Write-Host ""
 Write-Host "Extract the ZIP files into:   $fullGenieFolderPath ?"   -ForegroundColor Yellow
 Write-Host "" 
 Write-Host "-----------------------------------------------------"  -ForegroundColor Green 
+Write-Host "" 
+Write-Host "Extracting $genieConfigFiles into $fullGenieFolderPath"   -ForegroundColor Yellow
 PromptYesNo
-Expand-Archive -LiteralPath "$fullGenieFolderPath$genieConfigFiles" -DestinationPath "$fullGenieFolderPath" -ErrorAction SilentlyContinue
-Expand-Archive -LiteralPath "$fullGenieFolderPath$geniePlugins" -DestinationPath "$fullGenieFolderPath" -ErrorAction SilentlyContinue
-Expand-Archive -LiteralPath "$fullGenieFolderPath$geniePackage" -DestinationPath "$fullGenieFolderPath" -ErrorAction SilentlyContinue
+Expand-Archive -LiteralPath "$fullGenieFolderPath$genieConfigFiles" -DestinationPath "$fullGenieFolderPath"
+Write-Host "" 
+Write-Host "Extracting $geniePlugins into $fullGenieFolderPath"   -ForegroundColor Yellow
+PromptYesNo
+Expand-Archive -LiteralPath "$fullGenieFolderPath$geniePlugins" -DestinationPath "$fullGenieFolderPath\Plugins" -Force
+Write-Host "" 
+Write-Host "Extracting $geniePackage into $fullGenieFolderPath"   -ForegroundColor Yellow
+PromptYesNo
+Expand-Archive -LiteralPath "$fullGenieFolderPath$geniePackage" -DestinationPath "$fullGenieFolderPath"
+
 if (Test-Path $fullGenieFolderPath) {
     $folderfilecount = (Get-ChildItem -Path $fullGenieFolderPath -File | Measure-Object).Count
     if ($folderfilecount -gt 3){
