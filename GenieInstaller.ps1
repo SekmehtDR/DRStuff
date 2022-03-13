@@ -1,6 +1,6 @@
-#By Sekmeht Usho
-#https://github.com/SekmehtDR/DRstuff
-#13MAR2021
+#         By Sekmeht Usho
+# https://github.com/SekmehtDR/DRstuff
+#           13MAR2021
 
 #Github Release URL Info
 $releaseDownloadURL = "https://github.com/GenieClient/Genie4/releases/download/4.0.2.1/"
