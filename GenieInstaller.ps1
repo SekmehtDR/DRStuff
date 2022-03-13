@@ -46,7 +46,7 @@ function PromptYesNo {
 Clear-Host
 
 Write-Host "-----------------------------------------------------"  -ForegroundColor Green
-Write-Host "EZ-Genie 4x Installer - by Sekmeht"                               -ForegroundColor Green
+Write-Host "EZ-Genie 4x Installer - by Sekmeht"                     -ForegroundColor Green
 Write-Host "-----------------------------------------------------"  -ForegroundColor Green
 Write-Host "GITHUB URL: $genieGitURL"
 Write-Host ""                                                       -ForegroundColor Green
