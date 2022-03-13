@@ -67,7 +67,6 @@ switch ($buildanswer) {
     }
     default{
         write-host "No Match Found..."
-        Write-Host ""
         exit
     }
 }
