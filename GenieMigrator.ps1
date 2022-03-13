@@ -11,8 +11,11 @@ $gitHubRepo = $Matches.GithubRepo
 $gitHubVersion = $Matches.Version
 $genieGitURL = "https://github.com/$gitHubUser/$gitHubRepo/releases/download/$gitHubVersion/"
 
-#Where to create the genie folder at?
+#Where to create the genie folder at (Default)?
 $genieInstallRootFolder = "C:\temp\"
+
+#Where to migrate Genie folder from? (Default)
+$genieMigrateRootFolder = "C:\temp\Genie-XXXX"
 
 #Formatting of Genie FolderName (Genie Client <version without periods>. Ex. Genie Client 4020).
 $genieVersionName = $gitHubVersion.Replace(".", "")
@@ -53,13 +56,13 @@ Write-Host "- Option 2: Upgrade - EXISTING - Genie 4.X.X.X"         -ForegroundC
 Write-Host "- Option 3: Migrate - Upgrade - Genie 3.X.X.X "         -ForegroundColor Yellow
 Write-Host "- Option 4: Cancel"                                     -ForegroundColor Yellow
 Write-Host "" 
-$buildanswer = Read-Host "Please make a numeric selection from the options above"
-switch ($buildanswer) {
-    1 {$geniePackage = "Genie4-x86.zip"}
-    2 {$geniePackage = "Genie4-x64.zip"}
-    3 {$geniePackage = "Genie4-x64-Runtime-Dependent.zip"}
+$deploymentOption = Read-Host "Please make a numeric selection from the options above"
+switch ($deploymentOption) {
+    1 {$deploymentOption = "Install"}
+    2 {$deploymentOption = "Upgrade"}
+    3 {$deploymentOption = "Migrate"}
     4 {
-        write-host "Exiting..."                                     -ForegroundColor Red
+        write-host "Canceling..."                                     -ForegroundColor Red
         exit
     }
     default{
