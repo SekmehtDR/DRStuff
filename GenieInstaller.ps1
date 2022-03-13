@@ -1,5 +1,5 @@
 #Github Release URL Info
-$releaseDownloadURL = "https://github.com/GenieClient/Genie4/releases/download/4.0.2.0/"
+$releaseDownloadURL = "https://github.com/GenieClient/Genie4/releases/download/4.0.2.1/"
 $releaseDownloadURL -match 'https://github.com/(?<GithubUser>.*)/(?<GithubRepo>.*)/releases/download/(?<Version>.*)/'
 
 #Git Repo Stuff
