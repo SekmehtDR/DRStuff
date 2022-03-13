@@ -43,7 +43,6 @@ function PromptYesNo {
 
 #start of script
 Clear-Host
-
 Write-Host "-----------------------------------------------------"  -ForegroundColor Green
 Write-Host "EZ-Genie 4x Installer - by Sekmeht"                     -ForegroundColor Green
 Write-Host "-----------------------------------------------------"  -ForegroundColor Green
@@ -87,18 +86,14 @@ Write-Host ""
 Write-Host "-----------------------------------------------------"  -ForegroundColor Green
 
 #verification of some config
-Write-Host ""
 PromptYesNo
-Write-Host ""
 Write-Host "-----------------------------------------------------"  -ForegroundColor Green  
 #makes the new folder
 Write-Host ""
 Write-Host "Making new directory:   $fullGenieFolderPath" -ForegroundColor Yellow
 Write-Host ""
 Write-Host "-----------------------------------------------------"  -ForegroundColor Green
-Write-Host ""
 PromptYesNo
-Write-Host ""
 Write-Host "-----------------------------------------------------"  -ForegroundColor Green
 #if folder exists, see if its empty.. if not exit. If folder exists but is empty, continue. If older is new make it!
 if (Test-Path $fullGenieFolderPath) {
@@ -132,9 +127,7 @@ if ($buildanswer -eq "3") {
 }
 Write-Host ""
 Write-Host "-----------------------------------------------------"  -ForegroundColor Green  
-Write-Host ""
 PromptYesNo
-Write-Host ""
 Write-Host "-----------------------------------------------------"  -ForegroundColor Green  
 Write-Host ""
 Write-Host "Downloading $genieConfigFiles to $fullGenieFolderPath"   -ForegroundColor Yellow
@@ -156,9 +149,7 @@ Write-Host ""
 Write-Host "Extract the ZIP files to:   $fullGenieFolderPath ?"   -ForegroundColor Yellow
 Write-Host "" 
 Write-Host "-----------------------------------------------------"  -ForegroundColor Green 
-Write-Host "" 
 PromptYesNo
-Write-Host "" 
 Write-Host "-----------------------------------------------------"  -ForegroundColor Green 
 Write-Host "" 
 Write-Host "Extracting $genieConfigFiles to $fullGenieFolderPath"   -ForegroundColor Yellow
@@ -188,9 +179,7 @@ Write-Host ""
 Write-Host "Cleanup: Removing the ZIP Files downloaded in $fullGenieFolderPath"   -ForegroundColor Yellow
 Write-Host ""
 Write-Host "-----------------------------------------------------"  -ForegroundColor Green
-Write-Host ""
 PromptYesNo
-Write-Host ""
 Write-Host "-----------------------------------------------------"  -ForegroundColor Green
 Write-Host ""
 Write-Host "Removing $genieConfigFiles from $fullGenieFolderPath"   -ForegroundColor Yellow
