@@ -1,3 +1,7 @@
+#By Sekmeht
+#https://github.com/SekmehtDR/DRstuff
+#13MAR2021
+
 #Github Release URL Info
 $releaseDownloadURL = "https://github.com/GenieClient/Genie4/releases/download/4.0.2.1/"
 $releaseDownloadURL -match 'https://github.com/(?<GithubUser>.*)/(?<GithubRepo>.*)/releases/download/(?<Version>.*)/'
