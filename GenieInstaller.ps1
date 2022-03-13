@@ -62,11 +62,11 @@ switch ($buildanswer) {
     2 {$geniePackage = "Genie4-x64.zip"}
     3 {$geniePackage = "Genie4-x64-Runtime-Dependent.zip"}
     4 {
-        write-host "Exiting..."                                     -ForegroundColor Red
+        Write-Host "Exiting..."                                     -ForegroundColor Red
         exit
     }
     default{
-        write-host "No Match Found..."
+        Write-Host "No Match Found..."
         exit
     }
 }
@@ -76,7 +76,7 @@ Write-Host "-----------------------------------------------------"  -ForegroundC
 Write-Host ""
 Write-Host "GITHUB URL:             $genieGitURL"                   -ForegroundColor Yellow
 Write-Host "Config Package:         $genieConfigFiles"              -ForegroundColor Yellow
-write-Host "Plugins:                $geniePlugins"                  -ForegroundColor Yellow
+Write-Host "Plugins:                $geniePlugins"                  -ForegroundColor Yellow
 Write-Host "Application Package:    $geniePackage"                  -ForegroundColor Yellow
 if ($buildanswer -eq "3") {
     Write-Host "Desktop Runtime:        $windowsdesktopruntimeFilename" -ForegroundColor Yellow
@@ -121,7 +121,7 @@ Write-Host "Downloading files via Invoke-WebRequest..."             -ForegroundC
 Write-Host ""
 Write-Host "GITHUB URL:             $genieGitURL"                   -ForegroundColor Yellow
 Write-Host "Config Package:         $genieConfigFiles"              -ForegroundColor Yellow
-write-Host "Plugins:                $geniePlugins"                  -ForegroundColor Yellow
+Write-Host "Plugins:                $geniePlugins"                  -ForegroundColor Yellow
 Write-Host "Application Package:    $geniePackage"                  -ForegroundColor Yellow
 if ($buildanswer -eq "3") {
     Write-Host "Desktop Runtime:        $windowsdesktopruntimeFilename" -ForegroundColor Yellow
@@ -184,11 +184,11 @@ PromptYesNo
 Write-Host "-----------------------------------------------------"  -ForegroundColor Green
 Write-Host ""
 Write-Host "Removing $genieConfigFiles from $fullGenieFolderPath"   -ForegroundColor Yellow
-remove-item $fullGenieFolderPath$genieConfigFiles -Force
+Remove-Item $fullGenieFolderPath$genieConfigFiles -Force
 Write-Host "Removing $geniePlugins from $fullGenieFolderPath"   -ForegroundColor Yellow
-remove-item $fullGenieFolderPath$geniePlugins -Force
+Remove-Item $fullGenieFolderPath$geniePlugins -Force
 Write-Host "Removing $geniePackage from $fullGenieFolderPath"   -ForegroundColor Yellow
-remove-item $fullGenieFolderPath$geniePackage -Force
+Remove-Item $fullGenieFolderPath$geniePackage -Force
 Write-Host "" 
 Write-Host "Downloaded file cleanup completed..." -ForegroundColor Green
 Write-Host ""

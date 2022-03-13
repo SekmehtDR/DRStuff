@@ -79,11 +79,11 @@ switch ($deploymentOption) {
     2 {$deploymentOption = "Upgrade"}
     3 {$deploymentOption = "Migrate"}
     4 {
-        write-host "Canceling..."                                     -ForegroundColor Red
+        Write-Host "Canceling..."                                     -ForegroundColor Red
         exit
     }
     default{
-        write-host "No Match Found..."
+        Write-Host "No Match Found..."
         exit
     }
 }
@@ -111,11 +111,11 @@ if ($deploymentOption -eq "Install"){
         2 {$geniePackage = "Genie4-x64.zip"}
         3 {$geniePackage = "Genie4-x64-Runtime-Dependent.zip"}
         4 {
-            write-host "Exiting..."                                     -ForegroundColor Red
+            Write-Host "Exiting..."                                     -ForegroundColor Red
             exit
         }
         default{
-            write-host "No Match Found..."
+            Write-Host "No Match Found..."
             exit
         }
     }
@@ -124,7 +124,7 @@ if ($deploymentOption -eq "Install"){
     Write-Host "-----------------------------------------------------"  -ForegroundColor Green
     Write-Host ""
     Write-Host "G4 URL:                 $genieGitURL"                   -ForegroundColor Yellow
-    write-host "G4 Maps URL:            $genieMapsURL"                  -ForegroundColor Yellow
+    Write-Host "G4 Maps URL:            $genieMapsURL"                  -ForegroundColor Yellow
     Write-Host ""
     Write-Host "Config Package:         $genieConfigFiles"              -ForegroundColor Yellow
     write-Host "Plugins:                $geniePlugins"                  -ForegroundColor Yellow
@@ -166,7 +166,7 @@ if ($deploymentOption -eq "Install"){
     Write-Host "Downloading files via Invoke-WebRequest..."             -ForegroundColor Yellow
     Write-Host ""
     Write-Host "G4 URL:                 $genieGitURL"                   -ForegroundColor Yellow
-    write-host "G4 Maps URL:            $genieMapsURL"              -ForegroundColor Yellow
+    Write-Host "G4 Maps URL:            $genieMapsURL"              -ForegroundColor Yellow
     Write-Host ""
     Write-Host "Config Package:         $genieConfigFiles"              -ForegroundColor Yellow
     write-Host "Plugins:                $geniePlugins"                  -ForegroundColor Yellow
@@ -225,13 +225,13 @@ if ($deploymentOption -eq "Install"){
     Write-Host "Cleanup: Removing the ZIP Files downloaded in $fullGenieFolderPath"   -ForegroundColor Yellow
     Write-Host ""
     Write-Host "Removing $genieConfigFiles from $fullGenieFolderPath"   -ForegroundColor Yellow
-    remove-item $fullGenieFolderPath$genieConfigFiles -Force
+    Remove-Item $fullGenieFolderPath$genieConfigFiles -Force
     Write-Host "Removing $geniePlugins from $fullGenieFolderPath"   -ForegroundColor Yellow
-    remove-item $fullGenieFolderPath$geniePlugins -Force
+    Remove-Item $fullGenieFolderPath$geniePlugins -Force
     Write-Host "Removing $genieMaps from $fullGenieFolderPath"   -ForegroundColor Yellow
-    remove-item $fullGenieFolderPath$genieMaps -Force
+    Remove-Item $fullGenieFolderPath$genieMaps -Force
     Write-Host "Removing $geniePackage from $fullGenieFolderPath"   -ForegroundColor Yellow
-    remove-item $fullGenieFolderPath$geniePackage -Force
+    Remove-Item $fullGenieFolderPath$geniePackage -Force
     Write-Host "" 
     Write-Host "Downloaded file cleanup completed..." -ForegroundColor Green
     Write-Host "-----------------------------------------------------"  -ForegroundColor Green 
