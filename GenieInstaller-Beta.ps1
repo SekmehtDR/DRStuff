@@ -46,15 +46,15 @@ function PromptYesNo {
 
 #START OF SCRIPT, MAIN MENU SELECTION
 Clear-Host
-Write-Host "-----------------------------------------------------"  -ForegroundColor Green
-Write-Host "Genie 4 Deployment Tool"                                -ForegroundColor Green
-Write-Host "-----------------------------------------------------"  -ForegroundColor Green
-Write-Host ""                                                       -ForegroundColor Green
-Write-Host "Available Options:"                                     -ForegroundColor Yellow
-Write-Host "- Option 1: Install - NEW - Genie $gitHubVersion"       -ForegroundColor Yellow
-Write-Host "- Option 2: Upgrade - EXISTING - Genie 4.X.X.X"         -ForegroundColor Yellow
-Write-Host "- Option 3: Migrate - Upgrade - Genie 3.X.X.X "         -ForegroundColor Yellow
-Write-Host "- Option 4: Cancel"                                     -ForegroundColor Yellow
+Write-Host "-----------------------------------------------------"          -ForegroundColor Green
+Write-Host "Genie 4 Deployment Tool"                                        -ForegroundColor Green
+Write-Host "-----------------------------------------------------"          -ForegroundColor Green
+Write-Host ""                                                               -ForegroundColor Green
+Write-Host "Available Options:"                                             -ForegroundColor Yellow
+Write-Host "- Option 1: Install - NEW - Genie $gitHubVersion"               -ForegroundColor Yellow
+Write-Host "- Option 2: Upgrade - EXISTING - Genie 4.X.X.X - COMING SOON"   -ForegroundColor Yellow
+Write-Host "- Option 3: Migrate - UPGRADE - Genie 3.X.X.X - COMING SOON "   -ForegroundColor Yellow
+Write-Host "- Option 4: Cancel"                                             -ForegroundColor Yellow
 Write-Host "" 
 $deploymentOption = Read-Host "Please make a numeric selection from the options above"
 switch ($deploymentOption) {
@@ -236,5 +236,16 @@ if ($deploymentOption -eq "Install"){
     Write-Host ""
     Write-Host "END of Script!" -ForegroundColor Green 
     Write-Host "Please verify that Genie.exe launches successfully! Enjoy!" -ForegroundColor Green
+    exit
+}
+
+if ($deploymentOption -eq "Upgrade"){
+    Write-Host ""
+    Write-Host "Coming Soon" - -ForegroundColor Yellow
+    exit
+}
+if ($deploymentOption -eq "Migrate"){
+    Write-Host ""
+    Write-Host "Coming Soon" - -ForegroundColor Yellow
     exit
 }
