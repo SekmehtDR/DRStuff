@@ -1,4 +1,4 @@
-#By Sekmeht
+#By Sekmeht Usho
 #https://github.com/SekmehtDR/DRstuff
 #13MAR2021
 
