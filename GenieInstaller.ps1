@@ -26,6 +26,10 @@ $geniePlugins = "Plugins.zip"
 #Parent Installation Path, change $genieInstallRootFolder
 $fullGenieFolderPath = "$genieInstallRootFolder$genieFolderName\"
 
+#Microsoft Desktop Runtime Stuff
+$windowsdesktopruntimeSource = "https://download.visualstudio.microsoft.com/download/pr/7f3a766e-9516-4579-aaf2-2b150caa465c/d57665f880cdcce816b278a944092965/windowsdesktop-runtime-6.0.3-win-x64.exe"
+$windowsdesktopruntimeFilename = "windowsdesktop-runtime-6.0.3-win-x64.exe"
+
 #function to provide an exit
 function PromptYesNo {
     while ("yes","no" -notcontains $yorn_answer)
@@ -75,6 +79,9 @@ Write-Host "GITHUB URL:             $genieGitURL"                   -ForegroundC
 Write-Host "Config Package:         $genieConfigFiles"              -ForegroundColor Yellow
 write-Host "Plugins:                $geniePlugins"                  -ForegroundColor Yellow
 Write-Host "Application Package:    $geniePackage"                  -ForegroundColor Yellow
+if ($buildanswer -eq "3") {
+    Write-Host "Desktop Runtime:        $windowsdesktopruntimeFilename" -ForegroundColor Yellow
+}
 Write-Host ""
 Write-Host "Install Path:           $fullGenieFolderPath"           -ForegroundColor Yellow
 Write-Host ""
@@ -90,6 +97,7 @@ Write-Host ""
 Write-Host "Making new directory:   $fullGenieFolderPath" -ForegroundColor Yellow
 Write-Host ""
 Write-Host "-----------------------------------------------------"  -ForegroundColor Green
+Write-Host ""
 PromptYesNo
 Write-Host ""
 Write-Host "-----------------------------------------------------"  -ForegroundColor Green
@@ -120,32 +128,47 @@ Write-Host "GITHUB URL:             $genieGitURL"                   -ForegroundC
 Write-Host "Config Package:         $genieConfigFiles"              -ForegroundColor Yellow
 write-Host "Plugins:                $geniePlugins"                  -ForegroundColor Yellow
 Write-Host "Application Package:    $geniePackage"                  -ForegroundColor Yellow
+if ($buildanswer -eq "3") {
+    Write-Host "Desktop Runtime:        $windowsdesktopruntimeFilename" -ForegroundColor Yellow
+}
 Write-Host ""
 Write-Host "-----------------------------------------------------"  -ForegroundColor Green  
 Write-Host ""
 PromptYesNo
 Write-Host ""
+Write-Host "-----------------------------------------------------"  -ForegroundColor Green  
+Write-Host ""
+Write-Host "Downloading $genieConfigFiles to $fullGenieFolderPath"   -ForegroundColor Yellow
 Invoke-WebRequest -Uri "$genieGitURL$genieConfigFiles" -OutFile "$fullGenieFolderPath$genieConfigFiles"
+Write-Host "Downloading $geniePlugins to $fullGenieFolderPath"   -ForegroundColor Yellow
 Invoke-WebRequest -Uri "$genieGitURL$geniePlugins" -OutFile "$fullGenieFolderPath$geniePlugins"
+Write-Host "Downloading $geniePackage to $fullGenieFolderPath"   -ForegroundColor Yellow
 Invoke-WebRequest -Uri "$genieGitURL$geniePackage" -OutFile "$fullGenieFolderPath$geniePackage"
+if ($buildanswer -eq "3") {
+    Write-Host "Downloading $windowsdesktopruntimeFilename to $fullGenieFolderPath"   -ForegroundColor Yellow
+    Invoke-WebRequest -Uri "$windowsdesktopruntimeSource" -OutFile "$fullGenieFolderPath$windowsdesktopruntimeFilename"
+}
+Write-Host "" 
+Write-Host "File download completed..." -ForegroundColor Green
 #extracts the stuff in order
-Write-Host "-----------------------------------------------------"  -ForegroundColor Green 
-Write-Host "" 
-Write-Host "Extract the ZIP files into:   $fullGenieFolderPath ?"   -ForegroundColor Yellow
 Write-Host "" 
 Write-Host "-----------------------------------------------------"  -ForegroundColor Green 
 Write-Host "" 
-Write-Host "Extracting $genieConfigFiles into $fullGenieFolderPath"   -ForegroundColor Yellow
+Write-Host "Extract the ZIP files to:   $fullGenieFolderPath ?"   -ForegroundColor Yellow
+Write-Host "" 
+Write-Host "-----------------------------------------------------"  -ForegroundColor Green 
+Write-Host "" 
 PromptYesNo
+Write-Host "" 
+Write-Host "-----------------------------------------------------"  -ForegroundColor Green 
+Write-Host "" 
+Write-Host "Extracting $genieConfigFiles to $fullGenieFolderPath"   -ForegroundColor Yellow
 Expand-Archive -LiteralPath "$fullGenieFolderPath$genieConfigFiles" -DestinationPath "$fullGenieFolderPath"
-Write-Host "" 
-Write-Host "Extracting $geniePlugins into $fullGenieFolderPath"   -ForegroundColor Yellow
-PromptYesNo
+Write-Host "Extracting $geniePlugins to $fullGenieFolderPath"   -ForegroundColor Yellow
 Expand-Archive -LiteralPath "$fullGenieFolderPath$geniePlugins" -DestinationPath "$fullGenieFolderPath\Plugins" -Force
-Write-Host "" 
-Write-Host "Extracting $geniePackage into $fullGenieFolderPath"   -ForegroundColor Yellow
-PromptYesNo
+Write-Host "Extracting $geniePackage to $fullGenieFolderPath"   -ForegroundColor Yellow
 Expand-Archive -LiteralPath "$fullGenieFolderPath$geniePackage" -DestinationPath "$fullGenieFolderPath"
+Write-Host "" 
 
 if (Test-Path $fullGenieFolderPath) {
     $folderfilecount = (Get-ChildItem -Path $fullGenieFolderPath -File | Measure-Object).Count
@@ -158,6 +181,7 @@ if (Test-Path $fullGenieFolderPath) {
         exit
     }
 }
+
 Write-Host ""
 Write-Host "-----------------------------------------------------"  -ForegroundColor Green 
 #deletes the files
@@ -167,27 +191,23 @@ Write-Host ""
 Write-Host "-----------------------------------------------------"  -ForegroundColor Green
 Write-Host ""
 PromptYesNo
+Write-Host ""
+Write-Host "-----------------------------------------------------"  -ForegroundColor Green
+Write-Host ""
+Write-Host "Removing $genieConfigFiles from $fullGenieFolderPath"   -ForegroundColor Yellow
 remove-item $fullGenieFolderPath$genieConfigFiles -Force
+Write-Host "Removing $geniePlugins from $fullGenieFolderPath"   -ForegroundColor Yellow
 remove-item $fullGenieFolderPath$geniePlugins -Force
+Write-Host "Removing $geniePackage from $fullGenieFolderPath"   -ForegroundColor Yellow
 remove-item $fullGenieFolderPath$geniePackage -Force
+Write-Host "" 
+Write-Host "Downloaded file cleanup completed..." -ForegroundColor Green
 Write-Host ""
 Write-Host "-----------------------------------------------------"  -ForegroundColor Green 
 Write-Host ""
 if ($buildanswer -eq "3") {
     Write-Host "IMPORTANT: Option 3: x64 Runtime Dependent Related" -ForegroundColor Yellow
-    Write-Host "Would you like to download the Microsoft .NET 6.0.3 Desktop Runtime? It's a requirement to run." -ForegroundColor Yellow
-    Write-Host ""
-    Write-Host "-----------------------------------------------------"  -ForegroundColor Green
-    Write-Host ""
-    PromptYesNo
-    Write-Host ""
-    Write-Host "-----------------------------------------------------"  -ForegroundColor Green 
-    Write-Host ""
-    $windowsdesktopruntimeSource = "https://download.visualstudio.microsoft.com/download/pr/7f3a766e-9516-4579-aaf2-2b150caa465c/d57665f880cdcce816b278a944092965/windowsdesktop-runtime-6.0.3-win-x64.exe"
-    $windowsdesktopruntimeFilename = "windowsdesktop-runtime-6.0.3-win-x64.exe"
-    Invoke-WebRequest -Uri "$windowsdesktopruntimeSource" -OutFile "$fullGenieFolderPath$windowsdesktopruntimeFilename"
-    Write-Host "INFO: $windowsdesktopruntimeFilename has been saved as your $fullGenieFolderPath folder." -ForegroundColor Yellow
-    Write-Host "Please run it before launching genie.exe!" -ForegroundColor Yellow
+    Write-Host "Please make sure to run $windowsdesktopruntimeFilename prior to running Genie.exe!" -ForegroundColor Yellow
 }
 Write-Host ""
 Write-Host "END of Script!" -ForegroundColor Green 
