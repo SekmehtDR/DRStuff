@@ -210,6 +210,9 @@ if ($buildanswer -eq "3") {
     Write-Host "Please make sure to run $windowsdesktopruntimeFilename prior to running Genie.exe!" -ForegroundColor Yellow
 }
 Write-Host ""
+Write-Host "Opening $fullGenieFolderPath..."
+Invoke-Item "$fullGenieFolderPath"
+Write-Host ""
 Write-Host "END of Script!" -ForegroundColor Green 
-Write-Host "Please verify that Genie.exe launches successfully! Enjoy!" -ForegroundColor Green 
+Write-Host "Please verify that Genie.exe launches successfully! Enjoy!" -ForegroundColor Green
 exit
