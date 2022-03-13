@@ -67,10 +67,12 @@ switch ($buildanswer) {
     }
     default{
         write-host "No Match Found..."
+        Write-Host ""
         exit
     }
 }
 
+Write-Host ""
 Write-Host "-----------------------------------------------------"  -ForegroundColor Green
 Write-Host ""
 Write-Host "GITHUB URL:             $genieGitURL"                   -ForegroundColor Yellow
