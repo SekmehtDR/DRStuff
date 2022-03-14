@@ -18,7 +18,7 @@ $genieGitURL = "https://github.com/$gitHubUser/$gitHubRepo/releases/download/$gi
 #GenieMaps Location:
 $genieMapsURL = "https://github.com/GenieClient/Maps/archive/refs/heads/"
 $genieMapsGitHubZipfile = "main.zip"
-$genieMapsFileURL = "$genieMapsGitHubURL$genieMapsGitHubZipfile"
+$genieMapsFileURL = "$genieMapsURL$genieMapsGitHubZipfile"
 
 #Where to create the genie folder at (Default: C:\temp\)?
 $genieInstallRootFolder = "C:\temp\"
@@ -33,14 +33,14 @@ $genieFolderName = "Genie-$genieVersionName"
 #Name of files in Repo, package specific stuff will be generated using a switch below
 $genieConfigFiles = "Base.Config.Files.zip"
 $geniePlugins = "Plugins.zip"
-$genieMaps = "main.zip"
+$genieMaps = "Main.zip"
 
 #Parent Installation Path, change $genieInstallRootFolder
 $fullGenieFolderPath = "$genieInstallRootFolder$genieFolderName\"
 
 #Microsoft Desktop Runtime Stuff
 $windowsdesktopruntimeSource = "https://download.visualstudio.microsoft.com/download/pr/7f3a766e-9516-4579-aaf2-2b150caa465c/d57665f880cdcce816b278a944092965/windowsdesktop-runtime-6.0.3-win-x64.exe"
-$windowsdesktopruntimeFilename = "windowsdesktop-runtime-6.0.3-win-x64.exe"
+$windowsdesktopruntimeFilename = "WindowsDesktop-Runtime-6.0.3-win-x64.exe"
 
 #function to provide an exit
 function PromptYesNo {
@@ -245,6 +245,8 @@ if ($deploymentOption -eq "Install"){
     Write-Host "GenieMap Update/Cleanup..."   -ForegroundColor Yellow
     Copy-Item "$fullGenieFolderPath\Maps\Maps-main\*" "$fullGenieFolderPath\Maps" -Recurse -Force
     Remove-Item "$fullGenieFolderPath\Maps\Maps-main"  -Recurse -Force
+    Write-Host "Genie Scripts Cleanup..."   -ForegroundColor Yellow
+    Copy-Item "$fullGenieFolderPath\Maps\Copy These to Genie's Scripts Folder\*" "$fullGenieFolderPath\Scripts" -Recurse -Force
     Write-Host "" 
     Write-Host "Post-Install processing completed..." -ForegroundColor Green
     Write-Host "-----------------------------------------------------"  -ForegroundColor Green 
