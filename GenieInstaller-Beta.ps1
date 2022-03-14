@@ -1,6 +1,8 @@
 ###########################################
+#-----------------------------------------#
 #---By-Sekmeht-Usho---13MAR2021-----------#
 #---https://github.com/SekmehtDR/DRstuff--#
+#-----------------------------------------#
 ###########################################
 
 #Github Release URL Info - Important to update the numeric value in the download URL below
