@@ -261,16 +261,19 @@ if ($deploymentOption -eq "Install"){
     Write-Host ""
     Write-Host "END of Script!" -ForegroundColor Green 
     Write-Host "Please verify that Genie.exe launches successfully! Enjoy!" -ForegroundColor Green
+    PromptYesNo
     exit
 }
 
 if ($deploymentOption -eq "Upgrade"){
     Write-Host ""
     Write-Host "Coming Soon" - -ForegroundColor Yellow
+    PromptYesNo
     exit
 }
 if ($deploymentOption -eq "Migrate"){
     Write-Host ""
     Write-Host "Coming Soon" - -ForegroundColor Yellow
+    PromptYesNo
     exit
 }
