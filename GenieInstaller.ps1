@@ -1,12 +1,12 @@
 ###########################################
 #-----------------------------------------#
-#---By-Sekmeht-13MAR2021------------------#
+#---By-Sekmeht-16MAR2021------------------#
 #---https://github.com/SekmehtDR/DRstuff--#
 #-----------------------------------------#
 ###########################################
 
 #Github Release URL Info - Important to update the numeric value in the download URL below
-$releaseDownloadURL = "https://github.com/GenieClient/Genie4/releases/download/4.0.2.1/"
+$releaseDownloadURL = "https://github.com/GenieClient/Genie4/releases/download/4.0.2.2/"
 $releaseDownloadURL -match 'https://github.com/(?<GithubUser>.*)/(?<GithubRepo>.*)/releases/download/(?<Version>.*)/'
 
 #Git Repo Stuff
