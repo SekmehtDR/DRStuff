@@ -261,7 +261,7 @@ if ($deploymentOption -eq "Install"){
     Write-Host ""
     Write-Host "END of Script!" -ForegroundColor Green 
     Write-Host "Please verify that Genie.exe launches successfully! Enjoy!" -ForegroundColor Green
-    PromptYesNo
+    pause
     exit
 }
 
