@@ -5,6 +5,9 @@
 #-----------------------------------------#
 ###########################################
 
+#Location of Genie Root Folder (Default: C:\temp\)?
+$genieInstallRootFolder = "C:\temp\"
+
 #Github Release URL Info - Important to update the numeric value in the download URL below
 $releaseDownloadURL = "https://github.com/GenieClient/Genie4/releases/download/4.0.2.2/"
 $releaseDownloadURL -match 'https://github.com/(?<GithubUser>.*)/(?<GithubRepo>.*)/releases/download/(?<Version>.*)/'
@@ -19,9 +22,6 @@ $genieGitURL = "https://github.com/$gitHubUser/$gitHubRepo/releases/download/$gi
 $genieMapsURL = "https://github.com/GenieClient/Maps/archive/refs/heads/"
 $genieMapsGitHubZipfile = "main.zip"
 $genieMapsFileURL = "$genieMapsURL$genieMapsGitHubZipfile"
-
-#Where to create the genie folder at (Default: C:\temp\)?
-$genieInstallRootFolder = "C:\temp\"
 
 #Where to migrate Genie folder from? (Default)
 $genieMigrateRootFolder = ""
@@ -98,19 +98,19 @@ if ($deploymentOption -eq "UpdateMaps"){
     Write-Host "Option 1: UPDATE - GenieMaps"
     Write-Host "-----------------------------------------------------"  -ForegroundColor Green
     Write-Host ""
-    Write-Host "G4 Maps URL:            $genieMapsURL"                  -ForegroundColor Yellow
-    write-Host "GenieMaps:              $genieMapsGitHubZipfile"        -ForegroundColor Yellow
-    Write-Host ""
-    Write-Host "Genie Maps Path:        $fullGenieFolderPath\Maps"      -ForegroundColor Yellow
+    Write-Host "- G4 Maps URL:            $genieMapsURL"                -ForegroundColor Yellow
+    write-Host "- GenieMaps:              $genieMapsGitHubZipfile"      -ForegroundColor Yellow
+    Write-Host ""     -ForegroundColor Yellow             
+    Write-Host "- Genie Maps Path:        $fullGenieFolderPath\Maps"    -ForegroundColor Yellow
     Write-Host ""
     Write-Host "-----------------------------------------------------"  -ForegroundColor Green
     PromptYesNo
     Write-Host "-----------------------------------------------------"  -ForegroundColor Green  
     Write-Host ""
-    Write-Host "Downloading files via Invoke-WebRequest..."             -ForegroundColor Yellow
+    Write-Host "Downloading files: via Invoke-WebRequest..."             -ForegroundColor Yellow
     Write-Host ""
-    Write-Host "G4 Maps URL:            $genieMapsURL"              -ForegroundColor Yellow
-    write-Host "GenieMaps:              $genieMapsGitHubZipfile"        -ForegroundColor Yellow
+    Write-Host "- G4 Maps URL:            $genieMapsURL"              -ForegroundColor Yellow
+    write-Host "- GenieMaps:              $genieMapsGitHubZipfile"        -ForegroundColor Yellow
     Write-Host ""
     Write-Host "Downloading $genieMaps to $fullGenieFolderPath"   -ForegroundColor Yellow
     Invoke-WebRequest -Uri "$genieMapsURL$genieMapsGitHubZipfile" -OutFile "$fullGenieFolderPath\$genieMapsGitHubZipfile"
@@ -119,11 +119,11 @@ if ($deploymentOption -eq "UpdateMaps"){
     Write-Host "" 
     Write-Host "-----------------------------------------------------"  -ForegroundColor Green 
     Write-Host "" 
-    Write-Host "Extract the ZIP files to:   $fullGenieFolderPath\Maps"   -ForegroundColor Yellow
+    Write-Host "Extract ZIP files to:   $fullGenieFolderPath\Maps"   -ForegroundColor Yellow
     Write-Host "" 
-    Write-Host "CleanUp Maps Directory in $fullGenieFolderPath\Maps"   -ForegroundColor Yellow
+    Write-Host "- CleanUp Maps Directory in $fullGenieFolderPath\Maps"   -ForegroundColor Yellow
     Remove-Item "$fullGenieFolderPath\Maps\*"  -Recurse -Force
-    Write-Host "Extracting $genieMaps to $fullGenieFolderPath"   -ForegroundColor Yellow
+    Write-Host "- Extracting $genieMaps to $fullGenieFolderPath"   -ForegroundColor Yellow
     Expand-Archive -LiteralPath "$fullGenieFolderPath\$genieMapsGitHubZipfile" -DestinationPath "$fullGenieFolderPath\Maps"
     Write-Host "" 
 
@@ -147,26 +147,26 @@ if ($deploymentOption -eq "UpdateMaps"){
     Write-Host ""
     Write-Host "-----------------------------------------------------"  -ForegroundColor Green 
     Write-Host ""
-    Write-Host "Cleanup: Removing the ZIP Files downloaded in $fullGenieFolderPath"   -ForegroundColor Yellow
+    Write-Host "Cleanup: Removing downloaded ZIP file(s)..."   -ForegroundColor Yellow
     Write-Host ""
-    Write-Host "Removing $genieMaps from $fullGenieFolderPath"   -ForegroundColor Yellow
+    Write-Host "- Removing $genieMaps from $fullGenieFolderPath"   -ForegroundColor Yellow
     Remove-Item "$fullGenieFolderPath\$genieMaps" -Force
     Write-Host "" 
     Write-Host "Downloaded file cleanup completed..." -ForegroundColor Green
     Write-Host ""
     Write-Host "-----------------------------------------------------"  -ForegroundColor Green 
     Write-Host ""
-    Write-Host "Post-Install processing..."   -ForegroundColor Yellow
+    Write-Host "Post-install processing..."   -ForegroundColor Yellow
     Write-Host ""
-    Write-Host "GenieMap Update/Cleanup..."   -ForegroundColor Yellow
+    Write-Host "- Genie Map Update... Processing..."   -ForegroundColor Yellow
     Copy-Item "$fullGenieFolderPath\Maps\Maps-main\*" "$fullGenieFolderPath\Maps" -Recurse -Force
     Remove-Item "$fullGenieFolderPath\Maps\Maps-main"  -Recurse -Force
     Copy-Item "$fullGenieFolderPath\Maps\Festivals Copy to the Maps Folder\*" "$fullGenieFolderPath\Maps" -Recurse -Force
     Copy-Item "$fullGenieFolderPath\Maps\Quests (Spoiler Alert) Copy to the Maps Folder\*" "$fullGenieFolderPath\Maps" -Recurse -Force
-    Write-Host "Genie Scripts Cleanup..."   -ForegroundColor Yellow
+    Write-Host "- Genie Scripts Update... Processing..."   -ForegroundColor Yellow
     Copy-Item "$fullGenieFolderPath\Maps\Copy These to Genie's Scripts Folder\*" "$fullGenieFolderPath\Scripts" -Recurse -Force
     Write-Host "" 
-    Write-Host "Post-Install processing completed..." -ForegroundColor Green
+    Write-Host "Post-install processing completed..." -ForegroundColor Green
     Write-Host ""
     Write-Host "-----------------------------------------------------"  -ForegroundColor Green 
     Write-Host "" 
