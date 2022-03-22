@@ -105,7 +105,20 @@ if ($deploymentOption -eq "UpdateMaps"){
     Write-Host ""
     Write-Host "-----------------------------------------------------"  -ForegroundColor Green
     PromptYesNo
-    Write-Host "-----------------------------------------------------"  -ForegroundColor Green  
+    Write-Host "-----------------------------------------------------"  -ForegroundColor Green
+    Write-Host ""
+    Write-Host "Checking if folder exists..."             -ForegroundColor Yellow
+    Write-Host ""
+    if (Test-Path "$fullGenieFolderPath\Maps") {
+        Write-Host "- Folder exists... continuing..." -ForegroundColor Green
+        Write-Host ""
+    } else {
+        Write-Host "- Folder does not exist...exiting..." -ForegroundColor Red
+        Write-Host ""
+        pause
+        exit
+    } 
+    Write-Host "-----------------------------------------------------"  -ForegroundColor Green
     Write-Host ""
     Write-Host "Downloading files: via Invoke-WebRequest..."             -ForegroundColor Yellow
     Write-Host ""
