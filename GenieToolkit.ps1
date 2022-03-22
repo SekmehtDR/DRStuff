@@ -101,10 +101,10 @@ if ($deploymentOption -eq "UpdateMaps"){
     Write-Host "G4 Maps URL:            $genieMapsURL"                  -ForegroundColor Yellow
     write-Host "GenieMaps:              $genieMapsGitHubZipfile"        -ForegroundColor Yellow
     Write-Host ""
-    Write-Host "Install Path:           $fullGenieFolderPath\Maps"           -ForegroundColor Yellow
+    Write-Host "Genie Maps Path:        $fullGenieFolderPath\Maps"      -ForegroundColor Yellow
     Write-Host ""
     Write-Host "-----------------------------------------------------"  -ForegroundColor Green
-    installReadyYN
+    PromptYesNo
     Write-Host "-----------------------------------------------------"  -ForegroundColor Green  
     Write-Host ""
     Write-Host "Downloading files via Invoke-WebRequest..."             -ForegroundColor Yellow
@@ -119,9 +119,9 @@ if ($deploymentOption -eq "UpdateMaps"){
     Write-Host "" 
     Write-Host "-----------------------------------------------------"  -ForegroundColor Green 
     Write-Host "" 
-    Write-Host "Extract the ZIP files to:   $fullGenieFolderPath"   -ForegroundColor Yellow
+    Write-Host "Extract the ZIP files to:   $fullGenieFolderPath\Maps"   -ForegroundColor Yellow
     Write-Host "" 
-    Write-Host "CleanUp Maps Directory in $fullGenieFolderPath"   -ForegroundColor Yellow
+    Write-Host "CleanUp Maps Directory in $fullGenieFolderPath\Maps"   -ForegroundColor Yellow
     Remove-Item "$fullGenieFolderPath\Maps\*"  -Recurse -Force
     Write-Host "Extracting $genieMaps to $fullGenieFolderPath"   -ForegroundColor Yellow
     Expand-Archive -LiteralPath "$fullGenieFolderPath\$genieMapsGitHubZipfile" -DestinationPath "$fullGenieFolderPath\Maps"
@@ -132,7 +132,7 @@ if ($deploymentOption -eq "UpdateMaps"){
         if ($folderfilecount -gt 3){
             Write-Host "Extraction of files was completed..." -ForegroundColor Green
         }
-        if ($folderfilecount -eq 3){
+        if ($folderfilecount -eq 0){
             Write-Host "Unable to extract the files properly..." -ForegroundColor Red
             Write-Host ""
             exit
@@ -144,6 +144,7 @@ if ($deploymentOption -eq "UpdateMaps"){
     
 
     #deletes the files
+    Write-Host ""
     Write-Host "-----------------------------------------------------"  -ForegroundColor Green 
     Write-Host ""
     Write-Host "Cleanup: Removing the ZIP Files downloaded in $fullGenieFolderPath"   -ForegroundColor Yellow
@@ -152,7 +153,7 @@ if ($deploymentOption -eq "UpdateMaps"){
     Remove-Item "$fullGenieFolderPath\$genieMaps" -Force
     Write-Host "" 
     Write-Host "Downloaded file cleanup completed..." -ForegroundColor Green
-    pause
+    Write-Host ""
     Write-Host "-----------------------------------------------------"  -ForegroundColor Green 
     Write-Host ""
     Write-Host "Post-Install processing..."   -ForegroundColor Yellow
@@ -164,17 +165,17 @@ if ($deploymentOption -eq "UpdateMaps"){
     Copy-Item "$fullGenieFolderPath\Maps\Quests (Spoiler Alert) Copy to the Maps Folder\*" "$fullGenieFolderPath\Maps" -Recurse -Force
     Write-Host "Genie Scripts Cleanup..."   -ForegroundColor Yellow
     Copy-Item "$fullGenieFolderPath\Maps\Copy These to Genie's Scripts Folder\*" "$fullGenieFolderPath\Scripts" -Recurse -Force
-
     Write-Host "" 
     Write-Host "Post-Install processing completed..." -ForegroundColor Green
-    pause
+    Write-Host ""
     Write-Host "-----------------------------------------------------"  -ForegroundColor Green 
     Write-Host "" 
-    Write-Host ""
     Write-Host "Opening $fullGenieFolderPath..."
     Invoke-Item "$fullGenieFolderPath"
     Write-Host ""
-    Write-Host "END of Script!" -ForegroundColor Green 
+    Write-Host "END of Script! Enjoy" -ForegroundColor Green 
+    Write-Host ""
+    Write-Host "-----------------------------------------------------"  -ForegroundColor Green 
     pause
     exit
 }
