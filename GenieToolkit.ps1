@@ -21,7 +21,7 @@ $genieMapsGitHubZipfile = "main.zip"
 $genieMapsFileURL = "$genieMapsURL$genieMapsGitHubZipfile"
 
 #Where to create the genie folder at (Default: C:\temp\)?
-$genieInstallRootFolder = "C:\"
+$genieInstallRootFolder = "C:\temp\"
 
 #Where to migrate Genie folder from? (Default)
 $genieMigrateRootFolder = ""
