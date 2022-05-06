@@ -1,3 +1,7 @@
+##########################################
+## Bombo Number 5... Improved by Sekmeht
+##########################################
+
 custom_require.call(%w[common common-items common-moonmage equipmanager])
 
   @settings = get_settings
