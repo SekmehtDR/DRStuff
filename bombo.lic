@@ -1,6 +1,7 @@
-##############################################
-## Bombo Number 5... ## Improved by Sekmeht ##
-##############################################
+###################################################
+##  Bombo Number 5... ##    Improved by Sekmeht  ##
+##  https://www.youtube.com/watch?v=EK_LN3XEcnw  ##
+###################################################
 
 custom_require.call(%w[common common-items common-moonmage equipmanager])
 
