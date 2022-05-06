@@ -52,8 +52,6 @@ custom_require.call(%w[common common-items common-moonmage equipmanager])
     fput('maneuver palmstrike')
   end
     
-
-
 doublestrike
 crash
 cleave
