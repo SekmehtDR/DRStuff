@@ -1,0 +1,55 @@
+custom_require.call(%w[common common-items common-moonmage equipmanager])
+
+  @settings = get_settings
+  @equipment_manager = EquipmentManager.new(@settings)
+
+  def doublestrike
+    @equipment_manager.empty_hands
+    @settings.bombo_doublestrike.each do |weapon|
+      @equipment_manager.wield_weapon?(weapon)
+    end
+    fput('maneuver doublestrike')
+    @equipment_manager.empty_hands
+  end
+
+  def crash
+    @equipment_manager.empty_hands
+    @equipment_manager.wield_weapon?(@settings.bombo_weapons['crash'])
+    fput('maneuver crash')
+    @equipment_manager.empty_hands
+  end
+    
+  def cleave
+    @equipment_manager.empty_hands
+    @equipment_manager.wield_weapon?(@settings.bombo_weapons['cleave'])
+    fput('maneuver cleave')
+    @equipment_manager.empty_hands
+  end
+    
+  def impale
+    @equipment_manager.empty_hands
+    @equipment_manager.wield_weapon?(@settings.bombo_weapons['impale'])
+    fput('maneuver impale')
+    @equipment_manager.empty_hands
+  end
+    
+  def twirl
+    @equipment_manager.empty_hands
+    @equipment_manager.wield_weapon?(@settings.bombo_weapons['twirl'])
+    fput('maneuver twirl')
+    @equipment_manager.empty_hands
+  end
+
+  def palmstrike
+    @equipment_manager.empty_hands
+    fput('maneuver palmstrike')
+  end
+    
+
+
+doublestrike
+crash
+cleave
+impale
+twirl
+palmstrike
