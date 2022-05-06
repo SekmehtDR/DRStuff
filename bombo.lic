@@ -1,6 +1,8 @@
-##############################################
-## Bombo Number 5... ## Improved by Sekmeht ##
-##############################################
+#################################################
+## Bombo Number 5...    ## Improved by Sekmeht ##
+#################################################
+## https://www.youtube.com/watch?v=EK_LN3XEcnw ##
+#################################################
 
 custom_require.call(%w[common common-items common-moonmage equipmanager])
 
@@ -114,7 +116,7 @@ def igniteweapon
   waitrt?
 end
 
-#This is the order of your rotation using the def's above#
+
 def maincycle
   bombocycle
   @equipment_manager.wield_weapon?(@settings.bombo_weapons['cleave'])
@@ -126,5 +128,4 @@ def maincycle
   waitrt?
 end
 
-#This is what actually starts the maincycle commands in game
 maincycle
